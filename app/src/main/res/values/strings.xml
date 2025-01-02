@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Facebook_posts</string>
+    <string name="what_s_on_your_mind">What\'s on your mind?</string>
+    <string name="comment">Comment</string>
+    <string name="like">Like</string>
+    <string name="share">Share</string>
+</resources>
