@@ -106,6 +106,13 @@
                         android:layout_height="50dp"
                         android:src="@drawable/me" />
                 </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    app:cardCornerRadius="8dp"
+                    android:backgroundTint="@color/green"
+                    app:layout_constraintBottom_toBottomOf="@id/user_img"
+                    app:layout_constraintEnd_toEndOf="@id/user_img"/>
 
                 <EditText
                     android:id="@+id/text_post"

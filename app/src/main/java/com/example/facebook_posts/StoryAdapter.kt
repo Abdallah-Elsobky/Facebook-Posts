@@ -1,5 +1,7 @@
 package com.example.facebook_posts
 
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +14,7 @@ class StoryAdapter(private val stories: List<Story>) : Adapter<StoryAdapter.Stor
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StoryViewHolder {
-        val view= LayoutInflater.from(parent.context).inflate(R.layout.story_layout,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.story_layout, parent, false)
         return StoryViewHolder(view)
     }
 
@@ -27,14 +29,21 @@ class StoryAdapter(private val stories: List<Story>) : Adapter<StoryAdapter.Stor
     }
 
     class StoryViewHolder(view: View) : ViewHolder(view) {
-        var userName=view.findViewById<TextView>(R.id.user_name)
-        var userImage=view.findViewById<ImageView>(R.id.user_img)
-        var storyImage=view.findViewById<ImageView>(R.id.story_img)
+        var userName = view.findViewById<TextView>(R.id.user_name)
+        var userImage = view.findViewById<ImageView>(R.id.user_img)
+        var storyImage = view.findViewById<ImageView>(R.id.story_img)
+        var userState = view.findViewById<View>(R.id.user_status_s)
 
+        @SuppressLint("ResourceAsColor")
         fun bind(story: Story) {
-            userName.text=story.User.Name
+            userName.text = story.User.Name
             userImage.setImageResource(story.User.Image)
             storyImage.setImageResource(story.Image)
+            if (story.User.online == true) {
+                userState.setBackgroundColor(Color.GREEN)
+            } else {
+                userState.setBackgroundColor(Color.GRAY)
+            }
         }
     }
 }

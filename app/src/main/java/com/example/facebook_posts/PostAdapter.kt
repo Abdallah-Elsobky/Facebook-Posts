@@ -1,12 +1,12 @@
 package com.example.facebook_posts
 
-import android.media.Image
+import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
@@ -34,13 +34,20 @@ class PostAdapter(private val posts: List<Post>) : Adapter<PostAdapter.PostViewH
         var postDate = view.findViewById<TextView>(R.id.post_date)
         var postText = view.findViewById<TextView>(R.id.post_text)
         var postImage = view.findViewById<ImageView>(R.id.post_img)
+        val userState = view.findViewById<View>(R.id.user_status_p)
 
+        @SuppressLint("ResourceAsColor")
         fun bind(post: Post) {
             userName.text = post.User.Name
             userImage.setImageResource(post.User.Image)
             postDate.text = post.Time
             postText.text = post.Content
             postImage.setImageResource(post.Image)
+            if (post.User.online == true) {
+                userState.setBackgroundColor(Color.GREEN)
+            } else {
+                userState.setBackgroundColor(Color.GRAY)
+            }
         }
     }
 }

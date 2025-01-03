@@ -1,5 +1,6 @@
 package com.example.facebook_posts
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -11,10 +12,10 @@ import kotlin.random.Random
 class FacebookActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFacebookBinding
     private val users = mutableListOf(
-        User("Abdallah Elsobky", R.drawable.user1),
-        User("Mohamed Hamdy", R.drawable.user2),
-        User("Mohamed Nasr", R.drawable.user3),
-        User("Ahmed Essam", R.drawable.user4)
+        User("Abdallah Elsobky", R.drawable.user1,true),
+        User("Mohamed Hamdy", R.drawable.user2,false),
+        User("Mohamed Nasr", R.drawable.user3,false),
+        User("Ahmed Essam", R.drawable.user4,true)
     )
 
     private val postImgs = mutableListOf(
@@ -35,6 +36,7 @@ class FacebookActivity : AppCompatActivity() {
         "Had an inspiring conversation today, feeling motivated. 🌟🗣️"
     )
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -47,8 +49,8 @@ class FacebookActivity : AppCompatActivity() {
             insets
         }
 
-        binding.rvStory.adapter = StoryAdapter(generateStories(20))
-        binding.rvPost.adapter = PostAdapter(generatePosts(20))
+        binding.rvStory.adapter = StoryAdapter(generateStories(50))
+        binding.rvPost.adapter = PostAdapter(generatePosts(50))
         scrolling()
     }
 
